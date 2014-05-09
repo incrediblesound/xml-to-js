@@ -4,7 +4,7 @@
     "description": "Translates an XML string into a JavaScript object",
     "main": "xml-parse.js",
     "author": "James H. Edwards",
-    "keywords": ["XML","ORM","Object"],
+    "keywords": ["XML","ORM","Object","parser"],
     "repository" : {
         "type": "git",
         "url": "https://github.com/incrediblesound/xml-to-js"
