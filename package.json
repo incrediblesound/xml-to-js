@@ -1,6 +1,6 @@
 {
     "name": "xml-to-js",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "description": "Translates an XML string into a JavaScript object",
     "main": "xml-parse.js",
     "author": "James H. Edwards",
