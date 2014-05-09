@@ -11,8 +11,7 @@ The main function is xmlToJs which is used thusly:
 
     makeObject(x, function(object) {
       console.log(object);
-      res.render('index');
-	    })
+	})
 
 Which renders the following object:
 
