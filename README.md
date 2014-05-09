@@ -31,11 +31,24 @@ Which renders the following object:
 The function rawData spits out the data used to make the object and populate it's key-value fields, it returns an object with an "index" property that contains all the container data, and a "values" property that contains the key-value data:
 
     var getData = require('xml-to-js').rawData;
+    
     getData(x, function(data) {
       console.log(data.index);
       res.render('index');
     })
     
     //=>{ index: [ [ { value: 'maps', parent: undefined } ],[ { value: 'china', parent: 'maps' } ],[ { value: 'ancient', parent: 'china' },{ value: 'modern', parent: 'china' } ] ],values: [ { level: 3, key: 'map1', parent: 'ancient', value: 'changsha' }, { level: 3, key: 'map2', parent: 'ancient', value: 'xian' },{ level: 3, key: 'map1', parent: 'modern', value: 'shanghai' } ] }
+
+If for some reason you want to obtain an empty object, that is, a JS object without the key-value pairs contained in the XML, use the emptyObject function:
+
+    var emptyObject = require('xml-to-js').emptyObject;
+    
+    emptyObject(x, function(object) {
+      console.log(object);
+    })
+    
+    //=> { maps: { china: { ancient: {}, modern: {} } } }
+
+TODO: Modify the functions to return an array of objects for XML objects with multiple root nodes.
 
     
