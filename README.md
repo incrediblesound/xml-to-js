@@ -49,6 +49,16 @@ If for some reason you want to obtain an empty object, that is, a JS object with
     
     //=> { maps: { china: { ancient: {}, modern: {} } } }
 
-TODO: Modify the functions to return an array of objects for XML objects with multiple root nodes.
+If your XML object has multiple root nodes you can use xmlToJsArray to return an array of objects for each root node:
 
+    var xml = '<people><john><place>2</place></john><mary><place>1</place></mary></people><things><cleanup>broom</cleanup><records>penpaper</records></things>'
+
+    var makeObjectArray = require('xml-to-js').xmlToJsArray;
+
+    makeObjectArray(xml, function (object) {
+    console.log(object);
+    })
+
+    //=> [ { people: { john: { place: '2' }, mary: { place: '1' } } },
+    { things: { cleanup: 'broom', records: 'penpaper' } } ]
     

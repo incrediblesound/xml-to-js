@@ -118,6 +118,16 @@ function forEach(array, fn) {
   }
 }
 
+function objectToArray(object) {
+  var results = [];
+  for(var x in object) {
+    var item = {};
+    item[x] = object[x];
+    results.push(item);
+  }
+  return results;
+}
+
 exports.xmlToJs = function(xml, fn) {
   var data = parseData(xml);
   var object = makeObject(data);
@@ -134,4 +144,12 @@ exports.emptyObject = function(xml, fn) {
   var data = parseData(xml);
   var object = makeObject(data);
   return fn(object);
+}
+
+exports.xmlToJsArray = function(xml, fn) {
+  var data = parseData(xml);
+  var object = makeObject(data);
+  var finished = addValues(object, data);
+  finished = objectToArray(finished);
+  return fn(finished);  
 }

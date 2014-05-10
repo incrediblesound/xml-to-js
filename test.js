@@ -1,0 +1,1 @@
+var xml = "<people><bob><age>23</age><job>coder</job><skills><computer>JavaScript</computer><personal>communication</personal></skills></bob><dave><age>23</age></dave></people>";
