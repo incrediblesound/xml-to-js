@@ -1,8 +1,8 @@
 xml-to-js
 =========
 
-<strong>New in 0.0.5</strong> Added support for empty spaces and the following characters where they occur as values: ! ? ( ) - . & % @ : $     
-The following value type will no longer cause an error: "<email>!i-hate $not?@snide.com</email>"
+<strong>New in 0.0.5</strong> Added support for empty spaces and the following characters where they occur as content between tags: ! ? ( ) - . & % @ : $     
+The following value type will no longer cause an error: !i-hate $not?@snide.com     
 
 The object of this module is to provide a direct translation of XML into a JavaScript object. The input paramaters are fairly strict which I'm hoping will result in a straight-forward and lightning fast, if somewhat specialized, module. The XML can only contain "container" tags and key value tags, for example:
 
