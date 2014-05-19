@@ -1,6 +1,9 @@
 xml-to-js
 =========
 
+<strong>New in 0.0.5</strong> Added support for the following characters where they occur as values: ! ? ( ) - . & % @  $     
+The following value type will no longer cause an error: "<email>!i-hate$not?@snide.com</email>"
+
 The object of this module is to provide a direct translation of XML into a JavaScript object. The input paramaters are fairly strict which I'm hoping will result in a straight-forward and lightning fast, if somewhat specialized, module. The XML can only contain "container" tags and key value tags, for example:
 
     var x = '<maps><china><ancient><map1>changsha</map1><map2>xian</map2></ancient><modern><map1>Shanghai</map1></modern></china></maps>';

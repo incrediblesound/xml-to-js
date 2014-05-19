@@ -30,7 +30,7 @@ var parseData = function(xml) {
     } else {
       key = stack[stack.length-1];
       stack.length-=1;
-      data = chunk.match(/\w{1,}/);
+      data = chunk.match(/[\w&-\.@%$!?\(\)]{1,}/);
       values.push({level: level, key: key,parent: stack[stack.length-1], value: data[0]});
       chunk = chunk.substring(data[0].length,chunk.length);
       data = getClosingTag(chunk);
