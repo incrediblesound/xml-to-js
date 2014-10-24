@@ -9,5 +9,9 @@
         "type": "git",
         "url": "https://github.com/incrediblesound/xml-to-js"
     },
+    "devDependencies": {
+        "mocha": "2.0.1",
+        "chai": "1.9.2"
+    },
     "engines": { "node": "*" }
 }

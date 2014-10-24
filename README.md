@@ -62,6 +62,5 @@ If your XML object has multiple root nodes you can use xmlToJsArray to return an
     console.log(object);
     })
 
-    //=> [ { people: { john: { place: '2' }, mary: { place: '1' } } },
-    { things: { cleanup: 'broom', records: 'penpaper' } } ]
+    //=> [ { people: { john: { place: '2' }, mary: { place: '1' } } }, { things: { cleanup: 'broom', records: 'penpaper' } } ]
     
