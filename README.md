@@ -1,5 +1,6 @@
 xml-to-js
 =========
+<img src='https://travis-ci.org/incrediblesound/xml-to-js.svg?branch=master'></img>
 
 <strong>New in 0.0.5</strong> Added support for empty spaces and the following characters where they occur as content between tags: ! ? ( ) - . & % @ : $     
 The following value type will no longer cause an error: !i-hate $not?@snide.com     
