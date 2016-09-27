@@ -1,49 +1,47 @@
 var parseData = function(xml) {
-      var values = [],
+  var values = [],
       index = [],
       level = 0,
       data,
       key,
       stack = [];
-    function maker(chunk) {
+  function maker(chunk) {
     if(chunk.length > 0) {
-    if(chunk[0] === '<' && chunk[1] !== '/') {
-      data = getTag(chunk);
-      chunk = data.chunk;
-      stack.push(data.key[0]);
-      if(chunk[0] !== '<') {
-          return maker(chunk);
-      }
-      if(typeof index[level] === 'undefined') {
-        index[level] = [];
-      }
-      index[level].push({value: data.key[0], parent: stack[stack.length-2]});
-      level +=1;
-      return maker(chunk);
-    } 
-    else if (chunk[0] === '<' && chunk[1] === '/') {
-      data = getClosingTag(chunk);
-      chunk = data.chunk;
-      level -= 1;
-      stack.length -=1;
-      return maker(chunk);
-    } else {
-      key = stack[stack.length-1];
-      stack.length-=1;
-      data = chunk.match(/[\w&-\.@%$!?\(\):\s]{1,}/);
-      values.push({level: level, key: key,parent: stack[stack.length-1], value: data[0]});
-      chunk = chunk.substring(data[0].length,chunk.length);
-      data = getClosingTag(chunk);
-      chunk = data.chunk;
-      return maker(chunk);
+      if(chunk[0] === '<' && chunk[1] !== '/') {
+        data = getTag(chunk);
+        chunk = data.chunk;
+        stack.push(data.key[0]);
+        if(chunk[0] !== '<') {
+            return maker(chunk);
         }
+        if(typeof index[level] === 'undefined') {
+          index[level] = [];
+        }
+        index[level].push({value: data.key[0], parent: stack[stack.length-2]});
+        level +=1;
+        return maker(chunk);
+      }
+      else if (chunk[0] === '<' && chunk[1] === '/') {
+        data = getClosingTag(chunk);
+        chunk = data.chunk;
+        level -= 1;
+        stack.length -=1;
+        return maker(chunk);
+      } else {
+        key = stack[stack.length-1];
+        stack.length-=1;
+        data = chunk.match(/[\w&-\.@%$!?\(\):\s]{1,}/);
+        values.push({level: level, key: key,parent: stack[stack.length-1], value: data[0]});
+        chunk = chunk.substring(data[0].length,chunk.length);
+        data = getClosingTag(chunk);
+        chunk = data.chunk;
+        return maker(chunk);
+      }
     } else {
-        return;
+      return;
     }
   }
-  if(index.length === 0) {
-    maker(xml);
-  }
+  maker(xml);
   return {index: index, values: values};
 };
 
@@ -132,7 +130,7 @@ exports.xmlToJs = function(xml, fn) {
   var data = parseData(xml);
   var object = makeObject(data);
   var finished = addValues(object, data);
-  return fn(finished);  
+  return fn(finished);
 }
 
 exports.rawData = function(xml, fn) {
@@ -151,5 +149,5 @@ exports.xmlToJsArray = function(xml, fn) {
   var object = makeObject(data);
   var finished = addValues(object, data);
   finished = objectToArray(finished);
-  return fn(finished);  
+  return fn(finished);
 }
